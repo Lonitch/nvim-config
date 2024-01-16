@@ -6,7 +6,7 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - auto-pair of ""/[]/{}
 - LSP for TS/JS/Rust
 - codelldb debugging by following the steps [here](https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(via--codelldb))
-    - you need to change the absolute path to `codelldb` in [debugging.lua](/lua/plugins/dugging.lua) 
+    - you need to change the absolute path to `codelldb` in [debugging.lua](/lua/plugins/debugging.lua) 
 
 ## Cheats sheet
 
