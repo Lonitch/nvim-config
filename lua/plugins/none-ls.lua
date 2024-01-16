@@ -14,7 +14,5 @@ return {
         null_ls.builtins.completion.spell,
       }
     })
-    -- <space>+g+f: enable global formatter
-    vim.keymap.set('n','<leader>gf',vim.lsp.buf.format,{})
-  end,
+ end,
 }
