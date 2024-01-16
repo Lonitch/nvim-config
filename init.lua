@@ -3,6 +3,7 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+vim.cmd("set relativenumber")
 -- <leader> => <space>
 vim.g.mapleader = " "
 
@@ -41,4 +42,5 @@ require("lazy").setup("plugins")
 -- global key map
 -- '-' goes to the line end
 vim.keymap.set('n','-','<End>')
-
+-- '<space>h' remove search hight light
+vim.keymap.set('n','<leader>h',':nohlsearch<CR>')

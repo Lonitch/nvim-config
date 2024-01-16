@@ -44,7 +44,7 @@ return {
       -- <space>+g+d: go to definition
       vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
       -- <space>+c+a: selects a code action available at the current position
-      vim.keymap.set('n','<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set('n','<leader>a', vim.lsp.buf.code_action, {})
     end,
   },
   }
