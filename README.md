@@ -11,6 +11,7 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 ## Cheats sheet
 
 - `<space>+<Tab>`: switch windows 
+- `<Ctrl-/>`: comment current line
 - `Alt+f`: escape insert/select mode 
 - `<space>a`: see code actions
 - `<space>h`: remove search highlights 

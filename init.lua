@@ -66,3 +66,6 @@ vim.keymap.set("n", "<leader>cd", ":lua require'dapui'.close()<CR>")
 vim.keymap.set("n", "<leader>tb", ":lua require'dap'.toggle_breakpoint()<CR>")
 vim.keymap.set("n", "<leader>=", ":lua require'dap'.continue()<CR>")
 vim.keymap.set("n", "<leader>-", ":lua require'dap'.step_over()<CR>")
+
+-- COMMENTING 
+vim.keymap.set("n", "<C-_>", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true })
