@@ -75,3 +75,7 @@ vim.keymap.set("n", "<leader>-", ":lua require'dap'.step_over()<CR>",{ noremap =
 
 -- COMMENTING 
 vim.keymap.set("n", "<C-_>", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true })
+
+-- BUFFER JUMPING
+vim.keymap.set("n", "<leader>b", ":bnext<CR>",{ noremap = true, silent = true })
+vim.keymap.set("n", "<leader><leader>b", ":bprevious<CR>",{ noremap = true, silent = true })

@@ -12,6 +12,8 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 - `g;`: go to last changed place
 - `gi`: go to last place and insert
+- `<space>b`: go to next opened buffer 
+- `<space><space>b`: go to previous opened buffer 
 - `zo/c`: open/close fold under the cursor
 - `zO/C`: open/close fold recursively under the cursor, folds without cursor in them unaffected
 - `zR`: open all folds 
