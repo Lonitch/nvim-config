@@ -3,7 +3,12 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+-- show relative line numbers
 vim.cmd("set relativenumber")
+-- fold code
+vim.cmd("set foldmethod=indent")
+-- Disable folding in Telescope's result window.
+vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
 -- <leader> => <space>
 vim.g.mapleader = " "
 
@@ -43,9 +48,10 @@ require("lazy").setup("plugins")
 vim.keymap.set("n", "-", "<End>")
 -- '<space>h' remove search hight light
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
--- Alt+f to escape insert/select mode
+-- Alt+f to escape insert/select/replace mode
 vim.keymap.set("i", "<A-f>", "<C-[>")
 vim.keymap.set("v", "<A-f>", "<C-[>")
+vim.keymap.set("t", "<A-f>", "<C-[>")
 -- <space>+tab to switch windows
 vim.keymap.set("n", "<leader><Tab>", "<C-w><C-w>")
 
@@ -61,11 +67,11 @@ vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, {})
 
 -- DEBUGGING KEY REMAPPING
-vim.keymap.set("n", "<leader>od", ":lua require'dapui'.open()<CR>")
-vim.keymap.set("n", "<leader>cd", ":lua require'dapui'.close()<CR>")
-vim.keymap.set("n", "<leader>tb", ":lua require'dap'.toggle_breakpoint()<CR>")
-vim.keymap.set("n", "<leader>=", ":lua require'dap'.continue()<CR>")
-vim.keymap.set("n", "<leader>-", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<leader>od", ":lua require'dapui'.open()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>cd", ":lua require'dapui'.close()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>tb", ":lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>=", ":lua require'dap'.continue()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>-", ":lua require'dap'.step_over()<CR>",{ noremap = true, silent = true })
 
 -- COMMENTING 
 vim.keymap.set("n", "<C-_>", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true })

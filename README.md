@@ -10,6 +10,12 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 ## Cheats sheet
 
+- `g;`: go to last changed place
+- `gi`: go to last place and insert
+- `zo/c`: open/close fold under the cursor
+- `zO/C`: open/close fold recursively under the cursor, folds without cursor in them unaffected
+- `zR`: open all folds 
+- `zM`: close all folds 
 - `<space>+<Tab>`: switch windows 
 - `<Ctrl-/>`: comment current line
 - `Alt+f`: escape insert/select mode 
