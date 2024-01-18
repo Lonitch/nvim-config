@@ -21,6 +21,7 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - `<space>+<Tab>`: switch windows 
 - `<Ctrl-/>`: comment current line
 - `Alt+f`: escape insert/select mode 
+- `<space>k`: see function info
 - `<space>a`: see code actions
 - `<space>h`: remove search highlights 
 - `<space>n`: open/close neotree file system, use `f`/`b`/`g`/`c` to open different tabs 
