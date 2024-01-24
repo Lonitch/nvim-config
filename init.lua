@@ -81,8 +81,8 @@ vim.keymap.set("n", "<C-_>", function()
 end, { noremap = true, silent = true })
 
 -- BUFFER JUMPING
-vim.keymap.set("n", "<leader>b", ":bnext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader><leader>b", ":bprevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader><leader>b", ":bnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>bb", ":bprevious<CR>", { noremap = true, silent = true })
 
 -- EXIT INSERT MODE AND JUMP OUT OF CURRENT PAIRED BRACKETS
 function _G.jump_to_next_special_char()

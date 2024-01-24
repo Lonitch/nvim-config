@@ -18,8 +18,8 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 ### Go-to places
 - `g;`: go to last changed place
 - `gi`: go to last place and insert
-- `<space>b`: go to next opened buffer 
-- `<space><space>b`: go to previous opened buffer 
+- `<space><space>b`: go to next opened buffer 
+- `<space>bb`: go to previous opened buffer 
 - `gt`: go to the last tab
 - `<space>j`: jump to the bottom line and centers the window at the line(page-down)
 - `<space>m`: jump to the top line and centers the window(page-up)
