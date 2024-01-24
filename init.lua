@@ -49,11 +49,13 @@ vim.keymap.set("n", "-", "<End>")
 -- '<space>h' remove search hight light
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 -- Alt+f to escape insert/select/replace mode
--- vim.keymap.set("i", "<A-f>", "<C-[>")
 vim.keymap.set("v", "<A-f>", "<C-[>")
 vim.keymap.set("t", "<A-f>", "<C-[>")
 -- <space>+tab to switch windows
 vim.keymap.set("n", "<leader><Tab>", "<C-w><C-w>")
+-- auto-cmd of centering window after line jumping to window bottom/top
+vim.api.nvim_set_keymap('n', '<space>j', 'Lzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>m', 'Hzz', { noremap = true, silent = true })
 
 -- FORMATTER KEY REMAPPING
 -- <space>+g+f: enable global formatter
@@ -89,7 +91,7 @@ function _G.jump_to_next_special_char()
 	local nearest_pos = nil
 	local nearest_dist = nil
 
-	for _, char in ipairs({ "/", ")", "}", "]", '\"', "," }) do
+	for _, char in ipairs({ "/", ")", "}", "]", '\"',"\'", ",", "`" }) do
 		local char_pos = string.find(current_line, char, col+1, false)
 		if char_pos then
 			local dist = char_pos - col
