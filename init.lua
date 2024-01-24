@@ -15,29 +15,29 @@ vim.g.mapleader = " "
 -- install lazy.vim pkg manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- install ripgrep on ubuntu, you might change it on
 -- different OS.
 local function is_cmd_available(name)
-  local f = io.popen("which " .. name)
-  local l = f:read("*a")
-  f:close()
-  return l ~= ""
+	local f = io.popen("which " .. name)
+	local l = f:read("*a")
+	f:close()
+	return l ~= ""
 end
 
 if not is_cmd_available("rg") then
-  print("ripgrep not found, installing...")
-  os.execute("sudo apt-get install ripgrep")
+	print("ripgrep not found, installing...")
+	os.execute("sudo apt-get install ripgrep")
 end
 
 -- lazy.vim set up plugins with options here
@@ -49,7 +49,7 @@ vim.keymap.set("n", "-", "<End>")
 -- '<space>h' remove search hight light
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 -- Alt+f to escape insert/select/replace mode
-vim.keymap.set("i", "<A-f>", "<C-[>")
+-- vim.keymap.set("i", "<A-f>", "<C-[>")
 vim.keymap.set("v", "<A-f>", "<C-[>")
 vim.keymap.set("t", "<A-f>", "<C-[>")
 -- <space>+tab to switch windows
@@ -71,11 +71,38 @@ vim.keymap.set("n", "<leader>od", ":lua require'dapui'.open()<CR>", { noremap = 
 vim.keymap.set("n", "<leader>cd", ":lua require'dapui'.close()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>tb", ":lua require'dap'.toggle_breakpoint()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>=", ":lua require'dap'.continue()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>-", ":lua require'dap'.step_over()<CR>",{ noremap = true, silent = true })
+vim.keymap.set("n", "<leader>-", ":lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
 
--- COMMENTING 
-vim.keymap.set("n", "<C-_>", function() require('Comment.api').toggle.linewise.current() end, { noremap = true, silent = true })
+-- COMMENTING
+vim.keymap.set("n", "<C-_>", function()
+	require("Comment.api").toggle.linewise.current()
+end, { noremap = true, silent = true })
 
 -- BUFFER JUMPING
-vim.keymap.set("n", "<leader>b", ":bnext<CR>",{ noremap = true, silent = true })
-vim.keymap.set("n", "<leader><leader>b", ":bprevious<CR>",{ noremap = true, silent = true })
+vim.keymap.set("n", "<leader>b", ":bnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader><leader>b", ":bprevious<CR>", { noremap = true, silent = true })
+
+-- EXIT INSERT MODE AND JUMP OUT OF CURRENT PAIRED BRACKETS
+function _G.jump_to_next_special_char()
+	local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+	local current_line = vim.api.nvim_get_current_line()
+	local nearest_pos = nil
+	local nearest_dist = nil
+
+	for _, char in ipairs({ "/", ")", "}", "]", '\"', "," }) do
+		local char_pos = string.find(current_line, char, col+1, false)
+		if char_pos then
+			local dist = char_pos - col
+			if not nearest_dist or dist < nearest_dist then
+				nearest_dist = dist
+				nearest_pos = char_pos
+			end
+		end
+	end
+
+	if nearest_pos then
+		vim.api.nvim_win_set_cursor(0, { line, nearest_pos })
+	end
+end
+
+vim.api.nvim_set_keymap("i", "<A-f>", "<Esc>:lua jump_to_next_special_char()<CR>", { noremap = true, silent = true })
