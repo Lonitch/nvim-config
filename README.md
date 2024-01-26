@@ -59,3 +59,4 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - `<leader>tb`: "toggle breakpoint"
 - `<leader>=`: "start debugger/continue"
 - `<leader>-`: "step over debugger"
+- `<space><space>f`: open floating msg from LSP at current line

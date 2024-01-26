@@ -56,6 +56,8 @@ vim.keymap.set("n", "<leader><Tab>", "<C-w><C-w>")
 -- auto-cmd of centering window after line jumping to window bottom/top
 vim.api.nvim_set_keymap('n', '<space>j', 'Lzz', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<space>m', 'Hzz', { noremap = true, silent = true })
+-- check the floating message from LSP at current line
+vim.api.nvim_set_keymap('n', '<space><space>f', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 
 -- FORMATTER KEY REMAPPING
 -- <space>+g+f: enable global formatter
