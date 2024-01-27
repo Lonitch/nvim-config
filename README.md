@@ -15,6 +15,11 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 ## Cheats sheet
 
+### Add or delete things 
+In `neotree`:
+- `a`: add file/folder
+- `d`: delete file/folder 
+
 ### Go-to places
 - `g;`: go to last changed place
 - `gi`: go to last place and insert

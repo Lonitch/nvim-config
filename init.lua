@@ -60,7 +60,6 @@ vim.api.nvim_set_keymap('n', '<space>m', 'Hzz', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<space><space>f', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 
 -- FORMATTER KEY REMAPPING
--- <space>+g+f: enable global formatter
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 -- LSP KEY REMAPPING
 -- <space> + k to show documentation of hovered word
