@@ -54,11 +54,19 @@ vim.keymap.set("t", "<A-f>", "<C-[>")
 -- <space>+tab to switch windows
 vim.keymap.set("n", "<leader><Tab>", "<C-w><C-w>")
 -- auto-cmd of centering window after line jumping to window bottom/top
-vim.api.nvim_set_keymap('n', '<space>j', 'Lzz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>m', 'Hzz', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space>j", "Lzz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space>m", "Hzz", { noremap = true, silent = true })
 -- check the floating message from LSP at current line
-vim.api.nvim_set_keymap('n', '<space><space>f', ':lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap(
+	"n",
+	"<space><space>f",
+	":lua vim.diagnostic.open_float()<CR>",
+	{ noremap = true, silent = true }
+)
+-- <space>+n to open/close file tree
+vim.keymap.set("n", "<leader>n", ":Neotree filesystem reveal left toggle<CR>", { noremap = true, silent = true })
+-- <space>+b+o to reveal opened files
+vim.keymap.set("n", "<leader>bo", ":Neotree buffers reveal float<CR>", { noremap = true, silent = true })
 -- FORMATTER KEY REMAPPING
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 -- LSP KEY REMAPPING
@@ -92,8 +100,8 @@ function _G.jump_to_next_special_char()
 	local nearest_pos = nil
 	local nearest_dist = nil
 
-	for _, char in ipairs({ "/", ")", "}", "]", '\"',"\'", ",", "`" }) do
-		local char_pos = string.find(current_line, char, col+1, false)
+	for _, char in ipairs({ "/", ")", "}", "]", '"', "'", ",", "`" }) do
+		local char_pos = string.find(current_line, char, col + 1, false)
 		if char_pos then
 			local dist = char_pos - col
 			if not nearest_dist or dist < nearest_dist then
