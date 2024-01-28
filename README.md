@@ -57,6 +57,7 @@ In `neotree`:
 - `<space>ff`: open telescope file finder 
 - `<space>lg`: open telescope live grep 
 - `<space>bo`: show all opened buffers
+- `<Ctrl-q>`: save live-grep results from telescope to a split window at the bottom
 
 ### Debugging
 - `<leader>od`: "open debug ui"
