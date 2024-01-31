@@ -76,6 +76,8 @@ vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 -- <space>+a: selects a code action available at the current position
 vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, {})
+-- <space>gp for preview hunk 
+vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>",{noremap=true, silent=true})
 
 -- DEBUGGING KEY REMAPPING
 vim.keymap.set("n", "<leader>od", ":lua require'dapui'.open()<CR>", { noremap = true, silent = true })

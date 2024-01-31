@@ -67,3 +67,6 @@ In `neotree`:
 - `<leader>=`: "start debugger/continue"
 - `<leader>-`: "step over debugger"
 - `<space><space>f`: open floating msg from LSP at current line
+
+### Git 
+- `<leader>gp`: preview the hunk of current line
