@@ -11,6 +11,7 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 ## Prerequisites 
 - `ripgrep`
+- `node` and `npm`
 - `eslint` if using LSP for TS/JS
 - `setxkbmap -option ctrl:nocaps` in cmd to disable CapsLock(optional, use `setxkbmap -option` to restore)
 
