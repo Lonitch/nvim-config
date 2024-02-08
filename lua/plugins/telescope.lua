@@ -22,6 +22,8 @@ return  {
       vim.keymap.set('n','<leader>ff', builtin.find_files,{})
       -- <space>+l+g opens live grep
       vim.keymap.set('n','<leader>lg', builtin.live_grep, {})
+      -- Disable folding in Telescope's result window.
+      vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
     end,
 
   }
