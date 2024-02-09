@@ -48,6 +48,10 @@ In `neotree`:
 ### Commenting and formatting
 - `<Ctrl-/>`: comment current line
 - `<space>gf`: global formatting
+- `[count]gcc`: Toggles the number of line given as a prefix-count using line wise
+- `[count]gbc`: Toggles the number of line given as a prefix-count using block wise
+- `gc`: toggle the selected region using linewise comment 
+- `gb`: toggle the selected region using blockwise comment 
 
 ### Programming hints
 - `<space>k`: see function info
