@@ -71,3 +71,10 @@ In `neotree`:
 
 ### Git 
 - `<leader>gp`: preview the hunk of current line
+- `:Git add`: `git add` in terminal
+- `:Git commit`: `git commit` in terminal
+
+### Terminal 
+- `:terminal`: open a terminal in neovim as a split window
+- `i/I/a/A`: insert in terminal window
+- `<C-\><C-O>`: exit typing mode
