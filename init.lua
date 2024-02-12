@@ -41,6 +41,29 @@ end
 -- lazy.vim set up plugins with options here
 require("lazy").setup("plugins")
 
+-- run leptosfmt before saving .rs files
+local function format_with_leptosfmt()
+  -- Save the current cursor position
+  local save_cursor = vim.api.nvim_win_get_cursor(0)
+  -- Run leptosfmt on the current file
+  vim.cmd('silent !leptosfmt ' .. vim.fn.expand('%'))
+  formatting = true
+  -- Reload the file in the buffer
+  vim.cmd('edit!')
+  -- Restore the cursor position
+  vim.api.nvim_win_set_cursor(0, save_cursor)
+  -- Save the buffer again, avoiding infinite loop
+  if formatting then
+    vim.cmd('silent! w')
+    formatting = false
+  end
+end
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "*.rs",
+    callback = format_with_leptosfmt,
+})
+
 -- GLOBAL KEY REMAPPING
 -- '-' goes to the line end
 vim.keymap.set("n", "-", "<End>")

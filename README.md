@@ -5,12 +5,13 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - auto-completion
 - auto-formatting at save for Rust 
 - auto-pair of ""/[]/{}
-- LSP for TS/JS/Rust
+- LSP for TS/JS/Rust(Leptos)
 - codelldb debugging by following the steps [here](https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(via--codelldb))
     - you need to change the absolute path to `codelldb` in [debugging.lua](/lua/plugins/debugging.lua) 
 
 ## Prerequisites 
 - `ripgrep`
+- `leptosfmt`
 - `node` and `npm`
 - `eslint` if using LSP for TS/JS
 - `setxkbmap -option ctrl:nocaps` in cmd to disable CapsLock(optional, use `setxkbmap -option` to restore)

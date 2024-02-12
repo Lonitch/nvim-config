@@ -39,7 +39,7 @@ return {
 							ignored = {
 								leptos_macro = {
 									-- optional: --
-									-- "component",
+									"component",
 									"server",
 								},
 							},
