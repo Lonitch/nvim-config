@@ -46,6 +46,12 @@ In `neotree`:
 - `<space>+<Tab>`: switch windows 
 - `tabe .`: create a new tab
 
+### Change surrounds 
+- `sr"'`: replace current "" surrounds with ''
+- `saiw]`: wrap current word with []
+- `sas"`: wrap current line with ""
+- `sd"`: delete surrounds of ""
+
 ### Commenting and formatting
 - `<Ctrl-/>`: comment current line
 - `<space>gf`: global formatting
