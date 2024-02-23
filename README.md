@@ -62,10 +62,12 @@ bind-key -T copy-mode-vi 'y' send -X copy-selection
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tpope/vim-obsession'
 
 # persist tmux sessions after pc restart
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @resurrect-strategy-nvim 'session'
 set -g @resurrect-capture-pane-contents 'on'
 set -g @continuum-restore 'on'
 
@@ -74,7 +76,16 @@ run '~/.tmux/plugins/tpm/tpm'
 ```
 
 ### Default terminal behavior in `tmux`
+
 `tmux` do not support default behavior by default. To make pane behaves like normal terminal, `shift` should be hold. For example, to paste stuff from clipboard in `tmux` terminal pane, you need `shift+right click`.
+
+### Restore neovim session 
+If running `tmux` after restart does not restore your neovim session, you can do the following:
+1. run `:mksession!` neovim, this cmd will create a `Session.vim`in your current path
+2. run `<C-a>+<C-s>` to store your current session
+3. restart 
+4. open terminal, and run `tmux`
+5. in the pane used to run neovim, restore its session by running `nvim -S`
 
 ### Copy in tmux
 
@@ -96,10 +107,13 @@ tmux detach
 tmux attach -t sessionName
 # kill a session/window
 tmux kill-session -t sessionName
+# if you have pre-stored session, simply run 
+tmux
 
 # create a horizontal pane using <C-a>+-
 # adjust the height of the two panes using j/k
 # switch between panes using <C-a>+↑/↓
+# close pane by typing 'exit'
 # open neovim in upper pane, run terminal cmd in lower pane
 
 # for full-stack dev., it's useful to create 2 windows in a session
