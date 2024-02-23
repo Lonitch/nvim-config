@@ -5,6 +5,8 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 -- show relative line numbers
 vim.cmd("set relativenumber")
+-- use clipboard for copy and paste
+vim.cmd("set clipboard+=unnamedplus")
 -- fold code
 vim.cmd("set foldmethod=indent")
 -- <leader> => <space>
