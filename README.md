@@ -1,4 +1,4 @@
-# Neovim Configs
+# dotfiles for Neovim and tmux
 
 This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has following features:
 
