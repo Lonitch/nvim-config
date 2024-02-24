@@ -22,58 +22,7 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 ## `tmux` Configuration
 
-Recommended configuration in `~/.tmux.conf` is the following:
-
-```bash
-set -g default-terminal "screen-256color"
-
-# set command prefix to CTRL+a
-set -g prefix C-a
-unbind C-b
-bind-key C-a send-prefix
-
-# use | to open vertical pane in session
-unbind %
-bind | split-window -h
-
-# use - to open horizontal pane in session
-unbind '"'
-bind - split-window -v
-
-# hit r to refresh tmux settings, first time refresh: tmux source-file ~/.tmux.conf
-unbind r
-bind r source-file ~/.tmux.conf
-
-# resize panes using h(left)/j(down)/k(up)/l(right)
-bind -r j resize-pane -D 5
-bind -r k resize-pane -U 5
-bind -r l resize-pane -R 5
-bind -r h resize-pane -L 5
-
-# use m to minimize/maximize current pane
-bind -r m resize-pane -Z
-
-# enable vi copy mode
-setw -g mode-keys vi
-bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'y' send -X copy-selection
-
-
-# List of plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tpope/vim-obsession'
-
-# persist tmux sessions after pc restart
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @resurrect-strategy-nvim 'session'
-set -g @resurrect-capture-pane-contents 'on'
-set -g @continuum-restore 'on'
-
-# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-run '~/.tmux/plugins/tpm/tpm'
-```
+Recommended configuration for [ `~/.tmux.conf` ](./.tmux.conf)
 
 ### Default terminal behavior in `tmux`
 
