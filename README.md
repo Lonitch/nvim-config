@@ -1,5 +1,32 @@
 # dotfiles for Neovim and tmux
 
+<!-- mtoc-start -->
+
+* [Intro](#intro)
+* [Prerequisites](#prerequisites)
+* [`tmux` Configuration](#tmux-configuration)
+  * [Default terminal behavior in `tmux`](#default-terminal-behavior-in-tmux)
+  * [Restore neovim session ](#restore-neovim-session-)
+  * [Copy in tmux](#copy-in-tmux)
+  * [Simple workflow with `tmux`](#simple-workflow-with-tmux)
+* [Cheats sheet](#cheats-sheet)
+  * [Markdown ](#markdown-)
+  * [Add or delete things](#add-or-delete-things)
+  * [Go-to places](#go-to-places)
+  * [Folding code](#folding-code)
+  * [Mode switching](#mode-switching)
+  * [Tabs and windows](#tabs-and-windows)
+  * [Change surrounds](#change-surrounds)
+  * [Commenting and formatting](#commenting-and-formatting)
+  * [Programming hints](#programming-hints)
+  * [Find things](#find-things)
+  * [Debugging](#debugging)
+  * [Git](#git)
+  * [Terminal](#terminal)
+
+<!-- mtoc-end -->
+
+## Intro
 This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has following features:
 
 - hartime.nvim for self-discplined usage(bad habbits prohibitors and better workflow hints)
@@ -72,6 +99,12 @@ tmux
 ```
 
 ## Cheats sheet
+
+### Markdown 
+
+- `:Mtoc i`: insert ToC
+- `:Mtoc u`: update ToC 
+- `:Mtoc r`: remove ToC
 
 ### Add or delete things
 
