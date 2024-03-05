@@ -45,6 +45,7 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - `leptosfmt`( if use `leptos` )
 - `node` and `npm`
 - `eslint` ( if using LSP for TS/JS )
+- `vscode-langservers-extracted` (install via npm/bun)
 - `setxkbmap -option ctrl:nocaps` in cmd to disable CapsLock(optional, use `setxkbmap -option` to restore)
 
 ## `tmux` Configuration
