@@ -66,12 +66,12 @@ If running `tmux` after restart does not restore your neovim session, you can do
 
 ### Copy in tmux
 
-- enter copy mode: <C-a>+[
-- move around using h/j/k/l/0/$
-- begin copy highlighting: <space> or v
-- copy: <CR> or y
-- paste with <C-a>+]
-- exit copy mode: <C-c>
+- enter copy mode: `<C-a>-[`
+- move around using `h/j/k/l/0/$`
+- begin copy highlighting: `<space>` or `v`
+- copy: `<CR>` or `y`
+- paste with `<C-a>+]`
+- exit copy mode: `<C-c>`
 
 ### Simple workflow with `tmux`
 
