@@ -192,9 +192,28 @@ In `neotree`:
 
 ### Git
 
+`git-fugitive` and `vim-flog` are currently added to run git commands in nvim. You can use `:Git` to run commands just like you do in terminal. Some examples are:
+
 - `<leader>gp`: preview the hunk of current line
 - `:Git add`: `git add` in terminal
 - `:Git commit`: `git commit` in terminal
+
+Use `:Flog` to open a new tab that shows results of `git log`. The new tab contains info of all commits. You can find out what this command can do by `:help Flog`. Here we recommend 3 use cases:
+
+- Checking out a branch: 
+  - use `:Flog` to open new tab that shows all the commits
+  - hit "a" to show all hidden commits
+  - navigate to the branch you desire
+  - use `cob` to checkout the branch
+
+- View history of selected lines of code
+  - in visual mode, select lines of code of your interest
+  - use `:Flog` to open a new tab to show the past history relevant only to the selected snippet
+
+- View history of specific file
+```bash 
+:Flog -path=path/to/file
+```
 
 ### Terminal
 
