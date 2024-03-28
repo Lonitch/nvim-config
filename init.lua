@@ -1,3 +1,8 @@
+-- allow mouse use
+vim.api.nvim_create_autocmd("VimEnter", {
+    pattern = "*",
+    command = "set mouse=n",
+})
 -- make tab to be 2*space
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")

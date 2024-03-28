@@ -4,13 +4,12 @@
 
 * [Intro](#intro)
 * [Prerequisites](#prerequisites)
-* [`tmux` Configuration](#tmux-configuration)
   * [Default terminal behavior in `tmux`](#default-terminal-behavior-in-tmux)
-  * [Restore neovim session ](#restore-neovim-session-)
   * [Copy in tmux](#copy-in-tmux)
   * [Simple workflow with `tmux`](#simple-workflow-with-tmux)
 * [Cheats sheet](#cheats-sheet)
-  * [Markdown ](#markdown-)
+  * [Workspace](#workspace)
+  * [Markdown](#markdown)
   * [Add or delete things](#add-or-delete-things)
   * [Go-to places](#go-to-places)
   * [Folding code](#folding-code)
@@ -48,21 +47,14 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - `vscode-langservers-extracted` (install via npm/bun)
 - `setxkbmap -option ctrl:nocaps` in cmd to disable CapsLock(optional, use `setxkbmap -option` to restore)
 
-## `tmux` Configuration
+<details>
+<summary><b>tmux Configuration</b></summary>
 
 Recommended configuration for [ `~/.tmux.conf` ](./.tmux.conf)
 
 ### Default terminal behavior in `tmux`
 
-`tmux` do not support default behavior by default. To make pane behaves like normal terminal, `shift` should be hold. For example, to paste stuff from clipboard in `tmux` terminal pane, you need `shift+right click`.
-
-### Restore neovim session 
-If running `tmux` after restart does not restore your neovim session, you can do the following:
-1. run `:mksession!` neovim, this cmd will create a `Session.vim`in your current path
-2. run `<C-a>+<C-s>` to store your current session
-3. restart 
-4. open terminal, and run `tmux`
-5. in the pane used to run neovim, restore its session by running `nvim -S`
+To make pane behaves like normal terminal, `shift` should be hold. For example, to paste stuff from clipboard in `tmux` terminal pane, you need `shift+right click`.
 
 ### Copy in tmux
 
@@ -98,16 +90,35 @@ tmux
 # switch between windows: <C-a>+w
 # <C-a>+c to create new window
 ```
+</details>
 
 ## Cheats sheet
 
-### Markdown 
+### Workspace
+
+<details><summary>details</summary>
+
+A workspace is a folder containing multiple git repositories. Here we use [`projections.nvim`](https://github.com/GnikDroy/projections.nvim/tree/pre_release?tab=readme-ov-file) to manage workspaces. Using it gives you the following options:
+
+- `:AddWorkspace` to register current folder as a workspace
+- `<leader>fp` to list all the projects in current workspace
+- automatically save current `neovim` session. Next time when you are at a project folder, the latest session is restored.
+
+</details>
+
+### Markdown
+
+<details><summary>details</summary>
 
 - `:Mtoc i`: insert ToC
 - `:Mtoc u`: update ToC 
 - `:Mtoc r`: remove ToC
 
+</details>
+
 ### Add or delete things
+
+<details><summary>details</summary>
 
 In `neotree`:
 
@@ -115,7 +126,11 @@ In `neotree`:
 - `d`: delete file/folder
 - `r`: rename
 
+</details>
+
 ### Go-to places
+
+<details><summary>details</summary>
 
 - `g;`: go to last changed place
 - `gi`: go to last place and insert
@@ -126,23 +141,44 @@ In `neotree`:
 - `<space>m`: jump to the top line and centers the window(page-up)
 - `<space>gd`: go to definition
 
+</details>
+
 ### Folding code
+
+<details><summary>details</summary>
 
 - `zo/c`: open/close fold under the cursor
 - `zO/C`: open/close fold recursively under the cursor, folds without cursor in them unaffected
 - `zR`: open all folds
 - `zM`: close all folds
 
+</details>
+
 ### Mode switching
+
+<details><summary>details</summary>
 
 - `<Alt-f>`: escape insert mode and jump out of current paired ""/[]/{}/()/''/,/``
 
+</details>
+
 ### Tabs and windows
+
+<details><summary>details</summary>
 
 - `<space>+<Tab>`: switch windows
 - `tabe .`: create a new tab
 
+In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
+
+- `<C-x>`: Go to file selection as a split
+- `<C-v>`: Go to file selection as a vsplit
+
+</details>
+
 ### Change surrounds
+
+<details><summary>details</summary>
 
 | Old text                       | Command   | New text                   |
 | :----------------------------- | :-------- | :------------------------- |
@@ -158,7 +194,11 @@ In `neotree`:
 | \<b\>or tag\* types\<\/b\>     | csth1<CR> | \<h1\>or tag types\<\/h1\> |
 | delete(functi\*on calls)       | dsf       | function calls             |
 
+</details>
+
 ### Commenting and formatting
+
+<details><summary>details</summary>
 
 - `<Ctrl-/>`: comment current line
 - `<space>gf`: global formatting
@@ -167,12 +207,20 @@ In `neotree`:
 - `gc`: toggle the selected region using linewise comment
 - `gb`: toggle the selected region using blockwise comment
 
+</details>
+
 ### Programming hints
+
+<details><summary>details</summary>
 
 - `<space>k`: see function info
 - `<space>a`: see code actions
 
+</details>
+
 ### Find things
+
+<details><summary>details</summary>
 
 - `<space>h`: remove search highlights
 - `<space>n`: open/close neotree file system, use `f`/`b`/`g`/`c` to open filesystem/buffers/git/components tabs
@@ -181,7 +229,11 @@ In `neotree`:
 - `<space>bo`: show all opened buffers
 - `<Ctrl-q>`: save live-grep results from telescope to a split window at the bottom
 
+</details>
+
 ### Debugging
+
+<details><summary>details</summary>
 
 - `<leader>od`: "open debug ui"
 - `<leader>cd`: "close debug ui"
@@ -190,7 +242,11 @@ In `neotree`:
 - `<leader>-`: "step over debugger"
 - `<space><space>f`: open floating msg from LSP at current line
 
+</details>
+
 ### Git
+
+<details><summary>details</summary>
 
 `git-fugitive` and `vim-flog` are currently added to run git commands in nvim. You can use `:Git` to run commands just like you do in terminal. Some examples are:
 
@@ -215,8 +271,14 @@ Use `:Flog` to open a new tab that shows results of `git log`. The new tab conta
 :Flog -path=path/to/file
 ```
 
+</details>
+
 ### Terminal
+
+<details><summary>details</summary>
 
 - `:terminal`: open a terminal in neovim as a split window
 - `i/I/a/A`: insert in terminal window
 - `<C-\><C-O>`: exit typing mode
+
+</details>
