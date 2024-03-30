@@ -47,7 +47,8 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - `eslint` ( if using LSP for TS/JS in your project )
 - [ `black` ](https://github.com/psf/black)(formatting python)
 - `vscode-langservers-extracted` (install via npm/bun)
-- `setxkbmap -option ctrl:nocaps` in cmd to disable CapsLock(optional, use `setxkbmap -option` to restore)
+
+If you are using neovim in anaconda. Consider using [`example-conda-env.yml`](./example-conda-env.yml) to build your environment.
 
 <details>
 <summary><b>tmux Configuration</b></summary>
