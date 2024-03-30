@@ -10,8 +10,8 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        -- define LSP servers here for LUA, RUST, and JS/TS
-        ensure_installed = { "lua_ls", "rust_analyzer", "tsserver" },
+        -- define LSP servers here for LUA, RUST, JS/TS, and PYTHON
+        ensure_installed = { "lua_ls", "rust_analyzer", "tsserver", "pyright" },
       })
     end,
   },
@@ -23,7 +23,7 @@ return {
       capabilities.textDocument.completion.completionItem.snippetSupport = true
       local lspconfig = require("lspconfig")
       lspconfig.tailwindcss.setup({
-        capabilities=capabilities,
+        capabilities = capabilities,
       })
       lspconfig.cssls.setup({
         capabilities = capabilities,
@@ -35,6 +35,9 @@ return {
         capabilities = capabilities,
       })
       lspconfig.tsserver.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.pyright.setup({
         capabilities = capabilities,
       })
       lspconfig.rust_analyzer.setup({

@@ -26,13 +26,14 @@
 <!-- mtoc-end -->
 
 ## Intro
+
 This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has following features:
 
 - hartime.nvim for self-discplined usage(bad habbits prohibitors and better workflow hints)
 - auto-completion
 - auto-formatting at save for Rust
 - auto-pair of ""/[]/{}
-- LSP for TS/JS/Rust(Leptos)
+- LSP for TS/JS/Rust(Leptos)/Python
 - codelldb debugging by following the steps [here](<https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(via--codelldb)>)
 - you need to change the absolute path to `codelldb` in [debugging.lua](/lua/plugins/debugging.lua)
 - You might consider using `tmux` for session management
@@ -43,7 +44,8 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - `tmux`( if session management is important )
 - `leptosfmt`( if use `leptos` )
 - `node` and `npm`
-- `eslint` ( if using LSP for TS/JS )
+- `eslint` ( if using LSP for TS/JS in your project )
+- [ `black` ](https://github.com/psf/black)(formatting python)
 - `vscode-langservers-extracted` (install via npm/bun)
 - `setxkbmap -option ctrl:nocaps` in cmd to disable CapsLock(optional, use `setxkbmap -option` to restore)
 
@@ -76,7 +78,7 @@ tmux detach
 tmux attach -t sessionName
 # kill a session/window
 tmux kill-session -t sessionName
-# if you have pre-stored session, simply run 
+# if you have pre-stored session, simply run
 tmux
 
 # create a horizontal pane using <C-a>+-
@@ -90,6 +92,7 @@ tmux
 # switch between windows: <C-a>+w
 # <C-a>+c to create new window
 ```
+
 </details>
 
 ## Cheats sheet
@@ -111,7 +114,7 @@ A workspace is a folder containing multiple git repositories. Here we use [`proj
 <details><summary>details</summary>
 
 - `:Mtoc i`: insert ToC
-- `:Mtoc u`: update ToC 
+- `:Mtoc u`: update ToC
 - `:Mtoc r`: remove ToC
 
 </details>
@@ -182,7 +185,7 @@ In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
 
 | Old text                       | Command   | New text                   |
 | :----------------------------- | :-------- | :------------------------- |
-| surr\*ound_words               | ysiw)     | (surround_words)           |
+| surr\*ound_words               | ysiw      | (surround_words)           |
 | \*make strings                 | ys$"      | "make strings"             |
 | require"nvim-surroun\*d"       | ysa")     | require("nvim-surround")   |
 | char c = \*x;                  | ysl'      | char c = 'x';              |
@@ -256,18 +259,21 @@ In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
 
 Use `:Flog` to open a new tab that shows results of `git log`. The new tab contains info of all commits. You can find out what this command can do by `:help Flog`. Here we recommend 3 use cases:
 
-- Checking out a branch: 
+- Checking out a branch:
+
   - use `:Flog` to open new tab that shows all the commits
   - hit "a" to show all hidden commits
   - navigate to the branch you desire
   - use `cob` to checkout the branch
 
 - View history of selected lines of code
+
   - in visual mode, select lines of code of your interest
   - use `:Flog` to open a new tab to show the past history relevant only to the selected snippet
 
 - View history of specific file
-```bash 
+
+```bash
 :Flog -path=path/to/file
 ```
 
