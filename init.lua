@@ -147,3 +147,14 @@ function _G.jump_to_next_special_char()
 end
 
 vim.api.nvim_set_keymap("i", "<A-f>", "<Esc>:lua jump_to_next_special_char()<CR>", { noremap = true, silent = true })
+
+-- Disable jedi-vim default mappings
+vim.g["jedi#goto_command"] = ""
+vim.g["jedi#goto_assignments_command"] = ""
+vim.g["jedi#goto_stubs_command"] = ""
+vim.g["jedi#goto_definitions_command"] = ""
+vim.g["jedi#documentation_command"] = ""
+vim.g["jedi#usages_command"] = ""
+vim.g["jedi#completions_command"] = ""
+vim.g["jedi#rename_command"] = ""
+vim.g["jedi#rename_command_keep_name"] = ""

@@ -3,6 +3,7 @@ return {
     "davidhalter/jedi-vim",
     config = function()
       _G.jedi_vim_init = function()
+        vim.g["jedi#usages_command"]="<leader><leader>N"
         vim.api.nvim_set_var("jedi#completions_enabled", 0)
         vim.api.nvim_set_var("jedi#auto_initialization", 0)
         vim.api.nvim_set_var("jedi#auto_vim_configuration", 0)
