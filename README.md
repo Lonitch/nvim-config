@@ -1,4 +1,4 @@
-# dotfiles for Neovim and tmux
+# dotfiles for Neovim-based dev. env.
 
 <!-- mtoc-start -->
 
@@ -42,6 +42,8 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 - `ripgrep`
 - `tmux`( if session management is important )
+- `rust` and [`rustfmt`](https://github.com/rust-lang/rustfmt)
+    - a reasonable `rustfmt` config can be found in [`.rustfmt.toml`](./.rustfmt.toml)
 - `leptosfmt`( if use `leptos` )
 - `node` and `npm`
 - `eslint` ( if using LSP for TS/JS in your project )
