@@ -129,6 +129,7 @@ A workspace is a folder containing multiple git repositories. Here we use [`proj
 - `:Mtoc i`: insert ToC
 - `:Mtoc u`: update ToC
 - `:Mtoc r`: remove ToC
+- `:Tab/x`: align this paragraph based on `x`
 
 </details>
 
