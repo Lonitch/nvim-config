@@ -51,6 +51,7 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - [ `python-mode` ](https://github.com/python-mode/python-mode.git)(formatting python)
 - [ `pyright` ](https://github.com/microsoft/pyright) for LSP support and auto-completion
 - `vscode-langservers-extracted` (install via npm/bun)
+- [ `quarto` ](https://quarto.org) if you need to generate Quarto-based reports
 
 If you are using neovim in anaconda. Consider using [`example-conda-env.yml`](./example-conda-env.yml) to build your environment.
 
@@ -119,6 +120,7 @@ A workspace is a folder containing multiple git repositories. Here we use [`proj
 - `:PymodeLintAuto`: auto-fix PEP8 issues
 - `<Tab>` in `.py`: auto-completion
 - `<Shift-Tab>` in `.py`: reverse order of options for completion
+- `:QuartoPreview`: preview quarto file
 
 ### Markdown
 
