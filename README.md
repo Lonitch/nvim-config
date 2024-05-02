@@ -9,6 +9,7 @@
   * [Simple workflow with `tmux`](#simple-workflow-with-tmux)
 * [Cheats sheet](#cheats-sheet)
   * [Workspace](#workspace)
+  * [Python](#python)
   * [Markdown](#markdown)
   * [Add or delete things](#add-or-delete-things)
   * [Go-to places](#go-to-places)
@@ -43,11 +44,12 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 - `ripgrep`
 - `tmux`( if session management is important )
 - `rust` and [`rustfmt`](https://github.com/rust-lang/rustfmt)
-    - a reasonable `rustfmt` config can be found in [`.rustfmt.toml`](./.rustfmt.toml)
+  - a reasonable `rustfmt` config can be found in [`.rustfmt.toml`](./.rustfmt.toml)
 - `leptosfmt`( if use `leptos` )
 - `node` and `npm`
 - `eslint` ( if using LSP for TS/JS in your project )
-- [ `black` ](https://github.com/psf/black)(formatting python)
+- [ `python-mode` ](https://github.com/python-mode/python-mode.git)(formatting python)
+- [ `pyright` ](https://github.com/microsoft/pyright) for LSP support and auto-completion
 - `vscode-langservers-extracted` (install via npm/bun)
 
 If you are using neovim in anaconda. Consider using [`example-conda-env.yml`](./example-conda-env.yml) to build your environment.
@@ -111,6 +113,12 @@ A workspace is a folder containing multiple git repositories. Here we use [`proj
 - automatically save current `neovim` session. Next time when you are at a project folder, the latest session is restored.
 
 </details>
+
+### Python
+
+- `:PymodeLintAuto`: auto-fix PEP8 issues
+- `<Tab>` in `.py`: auto-completion
+- `<Shift-Tab>` in `.py`: reverse order of options for completion
 
 ### Markdown
 

@@ -1,7 +1,7 @@
 -- allow mouse use
 vim.api.nvim_create_autocmd("VimEnter", {
-    pattern = "*",
-    command = "set mouse=n",
+	pattern = "*",
+	command = "set mouse=n",
 })
 -- make tab to be 2*space
 vim.cmd("set expandtab")
@@ -50,25 +50,25 @@ require("lazy").setup("plugins")
 
 -- run leptosfmt before saving .rs files
 local function format_with_leptosfmt()
-  -- Save the current cursor position
-  local save_cursor = vim.api.nvim_win_get_cursor(0)
-  -- Run leptosfmt on the current file
-  vim.cmd('silent !leptosfmt ' .. vim.fn.expand('%'))
-  formatting = true
-  -- Reload the file in the buffer
-  vim.cmd('edit!')
-  -- Restore the cursor position
-  vim.api.nvim_win_set_cursor(0, save_cursor)
-  -- Save the buffer again, avoiding infinite loop
-  if formatting then
-    vim.cmd('silent! w')
-    formatting = false
-  end
+	-- Save the current cursor position
+	local save_cursor = vim.api.nvim_win_get_cursor(0)
+	-- Run leptosfmt on the current file
+	vim.cmd("silent !leptosfmt " .. vim.fn.expand("%"))
+	formatting = true
+	-- Reload the file in the buffer
+	vim.cmd("edit!")
+	-- Restore the cursor position
+	vim.api.nvim_win_set_cursor(0, save_cursor)
+	-- Save the buffer again, avoiding infinite loop
+	if formatting then
+		vim.cmd("silent! w")
+		formatting = false
+	end
 end
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = "*.rs",
-    callback = format_with_leptosfmt,
+	pattern = "*.rs",
+	callback = format_with_leptosfmt,
 })
 
 -- GLOBAL KEY REMAPPING
@@ -101,11 +101,25 @@ vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 -- <space> + k to show documentation of hovered word
 vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, {})
 -- <space>+g+d: go to definition
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+-- custom function to toggle pymode_rope and trigger goto_definition
+local function pymode_goto_definition()
+	vim.g.pymode_rope = 1
+	vim.cmd("call pymode#rope#goto_definition()")
+	vim.g.pymode_rope = 0
+end
+-- Keymapping to trigger goto_definition based on filetype
+vim.keymap.set("n", "<leader>gd", function()
+	local filetype = vim.bo.filetype
+	if filetype == "python" then
+		pymode_goto_definition()
+	else
+		vim.lsp.buf.definition()
+	end
+end, {})
 -- <space>+a: selects a code action available at the current position
 vim.keymap.set("n", "<space>a", vim.lsp.buf.code_action, {})
--- <space>gp for preview hunk 
-vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>",{noremap=true, silent=true})
+-- <space>gp for preview hunk
+vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { noremap = true, silent = true })
 
 -- DEBUGGING KEY REMAPPING
 vim.keymap.set("n", "<leader>od", ":lua require'dapui'.open()<CR>", { noremap = true, silent = true })
