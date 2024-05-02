@@ -117,9 +117,10 @@ A workspace is a folder containing multiple git repositories. Here we use [`proj
 
 ### Python
 
+We use `rope` in `python-mode` for `goto_definition` functionality.
+
 - `:PymodeLintAuto`: auto-fix PEP8 issues
-- `<Tab>` in `.py`: auto-completion
-- `<Shift-Tab>` in `.py`: reverse order of options for completion
+- `<C-Space>` in `.py`: auto-completion
 - `:QuartoPreview`: preview quarto file
 
 ### Markdown
