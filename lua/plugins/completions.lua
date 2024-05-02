@@ -1,26 +1,7 @@
 return {
   {
-    "davidhalter/jedi-vim",
-    config = function()
-      _G.jedi_vim_init = function()
-        vim.g["jedi#usages_command"]="<leader><leader>N"
-        vim.api.nvim_set_var("jedi#completions_enabled", 0)
-        vim.api.nvim_set_var("jedi#auto_initialization", 0)
-        vim.api.nvim_set_var("jedi#auto_vim_configuration", 0)
-        vim.api.nvim_set_var("jedi#smart_auto_mappings", 0)
-        vim.cmd("call jedi#init_python()")
-      end
-
-      vim.cmd([[
-      augroup jedi_vim_autocmd
-        autocmd!
-        autocmd FileType python ++once lua jedi_vim_init()
-      augroup END
-    ]])
-    end,
-  },
-  {
     "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
@@ -57,11 +38,11 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "jedi_vim" },
           { name = "luasnip" }, -- For luasnip users.
           { name = "path" },
         }, {
           { name = "buffer" },
+          { name = "pymode" },
         }),
       })
     end,

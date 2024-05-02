@@ -17,7 +17,7 @@ return {
         -- spell completion
         null_ls.builtins.completion.spell,
         -- python formatting
-        null_ls.builtins.formatting.black,
+        -- null_ls.builtins.formatting.black,
       },
     })
   end,

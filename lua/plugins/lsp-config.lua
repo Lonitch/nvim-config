@@ -11,7 +11,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				-- define LSP servers here for LUA, RUST, JS/TS, and PYTHON
-				ensure_installed = { "lua_ls", "rust_analyzer", "tsserver", "pyright" },
+				ensure_installed = { "lua_ls", "rust_analyzer", "tsserver" },
 			})
 		end,
 	},
@@ -36,17 +36,6 @@ return {
 			})
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
-			})
-			lspconfig.pyright.setup({
-				settings = {
-					python = {
-						analysis = {
-							typeCheckingMode = "off",
-							autoSearchPaths = false,
-							useLibraryCodeForTypes = false,
-						},
-					},
-				},
 			})
 			lspconfig.rust_analyzer.setup({
 				capabilities = capabilities,
