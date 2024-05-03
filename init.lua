@@ -96,7 +96,14 @@ vim.keymap.set("n", "<leader>n", ":Neotree filesystem reveal left toggle<CR>", {
 -- <space>+b+o to reveal opened files
 vim.keymap.set("n", "<leader>bo", ":Neotree buffers reveal float<CR>", { noremap = true, silent = true })
 -- FORMATTER KEY REMAPPING
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+vim.keymap.set("n", "<leader>gf", function()
+  local filetype = vim.bo.filetype
+  if filetype == "python" then
+    vim.cmd("PymodeLintAuto")
+  else
+    vim.lsp.buf.format()
+  end
+end, {})
 -- LSP KEY REMAPPING
 -- <space> + k to show documentation of hovered word
 vim.keymap.set("n", "<leader>k", function()
