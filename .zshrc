@@ -105,33 +105,6 @@ alias ide="tmux has-session -t ide 2>/dev/null && tmux attach-session -t ide || 
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/sizhe/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/sizhe/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/sizhe/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/sizhe/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-source /opt/ros/humble/setup.zsh
-export GZ_VERSION=fortress
-export IGN_GAZEBO_SYSTEM_PLUGIN_PATH="$IGN_GAZEBO_SYSTEM_PLUGIN_PATH:$LD_LIBRARY_PATH"
-export GZ_SIM_PLUGIN_PATH="$GZ_SIM_PLUGIN_PATH:$LD_LIBRARY_PATH"
-export IGN_FILE_PATH="$IGN_FILE_PATH:$HOME/ppl-for-cobot/mir_ros2_ws/src/mir100_humble:$HOME/ppl-for-cobot/mir_ros2_ws/src/mir100_galactic"
-export IGN_GAZEBO_RESOURCE_PATH="$HOME/ppl-for-cobot/mir_ros2_ws/src/mir100_humble:$HOME/ppl-for-cobot/mir_ros2_ws/src/mir100_humble/robot_description/models:$HOME/ppl-for-cobot/mir_ros2_ws/src/mir100_humble/robot_gazebo/worlds"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/VHACD/build/linux/test:$PATH"
-export PATH="$HOME/VHACD/com.unity.robotics.vhacd/Runtime:$PATH"
-
-
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
@@ -154,7 +127,5 @@ export PATH="/snap/bin:$PATH"
 # enable legacy openssl provider 
 unset NODE_OPTIONS
 
-export GDRIVE_DOWNLOAD_KEY='V2VJQlJuNElJQ3VROE9MZ0RaWnNRX2tLbnVPZDBCR2VpdjBRU0ZlYU5Wdz0='
-export GDRIVE_DOWNLOAD_KEY='SGM0RUZiaERybUs1QmlmVkM5UXYtY3pYQTRuTHJTbEU5eFB3MUg1Q2Fobz0='
-export GDRIVE_DOWNLOAD_KEY='b1N4ZlJyMVhQY0xqbjR0bENxLW9fbHlhR3F3a1pFOHM1TTEwQTlXUEluaz0='
-export GDRIVE_DOWNLOAD_KEY='QTZodVVxbHRjTTczRUkyYlNHVTE5c2V6eXFUVTQ4Szh6OGd5ZTdrVGdXWT0='
+# Alias for nb2qmd
+alias nb2qmd="python3 /home/sizhe/fit-cnice/tdr2profile/tdr2profile/get_nb_img.py"
