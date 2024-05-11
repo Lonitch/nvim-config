@@ -8,6 +8,7 @@ return {
     vim.g.pymode_folding = 0
     vim.g.pymode_lint_checkers = { "pyflakes", "pep8", "mccabe" }
     vim.g.pymode_lint_options_pycodestyle = { max_line_length = 80 }
+    vim.g.pymode_lint_options_mccabe = { complexity = 16 }
     vim.g.pymode_rope = 0
     vim.g.pymode_rope_completion = 0
     vim.g.pymode_rope_complete_on_dot = 1
