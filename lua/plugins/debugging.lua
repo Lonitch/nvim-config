@@ -2,6 +2,7 @@ return {
   { "nvim-neotest/nvim-nio" },
   {
     "mrcjkb/rustaceanvim",
+    enabled = false,
     version = "^3", -- Recommended
     ft = { "rust" },
     config = function() end,
