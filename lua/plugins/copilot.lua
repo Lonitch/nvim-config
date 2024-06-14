@@ -11,12 +11,18 @@ return {
     config = function()
       require("copilot").setup({
         suggestion = {
+          auto_trigger = true,
           keymap = {
-            accept = "<M-l>",
+            accept = "<M-CR>",
             next = "<M-]>",
             prev = "<M-[>",
           },
         },
+        panel = {
+          keymap = {
+            open = "<M-l>",
+          }
+        }
       })
     end,
   },
