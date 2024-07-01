@@ -12,11 +12,32 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set relativenumber")
 -- use clipboard for copy and paste
 vim.cmd("set clipboard+=unnamedplus")
--- fold code
-vim.cmd("set foldmethod=indent")
--- <leader> => <space>
+-- global folding method
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true
+local function set_folding_for_filetype()
+    local filetype = vim.bo.filetype
+    if filetype == "neo-tree" then
+        vim.wo.foldenable = false
+        vim.wo.foldmethod = "manual"
+        vim.cmd("normal! zR")
+    else
+        vim.wo.foldenable = true
+        vim.wo.foldmethod = "indent"
+    end
+end
+vim.api.nvim_create_autocmd({"FileType", "BufEnter"}, {
+    pattern = "*",
+    callback = set_folding_for_filetype
+})
+vim.api.nvim_create_autocmd("User", {
+    pattern = "NeotreeBufferOpened",
+    callback = function()
+        vim.cmd("normal! zR")
+    end
+})
+-- global leader 
 vim.g.mapleader = " "
-
 -- install lazy.vim pkg manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

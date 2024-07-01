@@ -45,24 +45,24 @@ return {
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-				filetypes = { "rs" },
-				settings = {
-					["rust-analyzer"] = {
-						cargo = { allFeatures = true },
-						procMacro = {
-							ignored = {
-								leptos_macro = {
-									-- optional: --
-									"component",
-									"server",
-								},
-							},
-						},
-					},
-				},
-			})
+			-- lspconfig.rust_analyzer.setup({
+			-- 	capabilities = capabilities,
+			-- 	filetypes = { "rs" },
+			-- 	settings = {
+			-- 		["rust-analyzer"] = {
+			-- 			cargo = { allFeatures = true },
+			-- 			procMacro = {
+			-- 				ignored = {
+			-- 					leptos_macro = {
+			-- 						-- optional: --
+			-- 						"component",
+			-- 						"server",
+			-- 					},
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 	},
+			-- })
 		end,
 	},
 }
