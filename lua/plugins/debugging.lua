@@ -2,7 +2,6 @@ return {
   { "nvim-neotest/nvim-nio" },
   {
     "mrcjkb/rustaceanvim",
-    enabled = true,
     version = "^4", -- Recommended
     lazy = false,
     config = function() end,
