@@ -98,9 +98,12 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 
-# Fuzzy search for 'cd' command using fzf
-alias cdf="cd \$(find . -type d -print | fzf)"
-alias nvimf="nvim \$(find . -print | fzf)"
+# Set up fzf key bindings and fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore -g "!.git" .'
+# Fuzzy search for file using bat preview to open it in nvim alias inv="nvim \$(fzf -m --preview='batcat --color=always {}')"
 alias ide="tmux has-session -t ide 2>/dev/null && tmux attach-session -t ide || tmux new-session -s ide -d \; split-window -v -p 15 \; attach-session -t ide"
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -129,3 +132,25 @@ unset NODE_OPTIONS
 
 # Alias for nb2qmd
 alias nb2qmd="python3 /home/sizhe/fit-cnice/tdr2profile/tdr2profile/get_nb_img.py"
+
+# bun completions
+[ -s "/home/sizhe/.bun/_bun" ] && source "/home/sizhe/.bun/_bun"
+
+# create quarto project by using existing project as a template
+qc() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: qc <template_folder> <target_project_folder>
+ Example: qc ./template ./newproj"
+        return 1
+    fi
+
+    # Run quarto use template command
+    quarto use template "$1" <<< "$2"
+
+    # Copy .gitignore to the target folder
+    cp "$1/".gitignore "$2/"
+
+    echo "New Quarto Project created at $2"
+}
+
+

@@ -4,25 +4,7 @@
 
 * [Intro](#intro)
 * [Prerequisites](#prerequisites)
-  * [Default terminal behavior in `tmux`](#default-terminal-behavior-in-tmux)
-  * [Copy in tmux](#copy-in-tmux)
-  * [Simple workflow with `tmux`](#simple-workflow-with-tmux)
 * [Cheats sheet](#cheats-sheet)
-  * [Workspace](#workspace)
-  * [Python](#python)
-  * [Markdown](#markdown)
-  * [Add or delete things](#add-or-delete-things)
-  * [Go-to places](#go-to-places)
-  * [Folding code](#folding-code)
-  * [Mode switching](#mode-switching)
-  * [Tabs and windows](#tabs-and-windows)
-  * [Change surrounds](#change-surrounds)
-  * [Commenting and formatting](#commenting-and-formatting)
-  * [Programming hints](#programming-hints)
-  * [Find things](#find-things)
-  * [Debugging](#debugging)
-  * [Git](#git)
-  * [Terminal](#terminal)
 
 <!-- mtoc-end -->
 
@@ -41,6 +23,11 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 ## Prerequisites
 
+You can find an un-tested [shell script](./dotfile-setup.sh) to install all the prerequisites and copy/paste dotfiles.
+
+- `zsh`
+- `fzf`
+- `bat`
 - `ripgrep`
 - `tmux`( if session management is important )
 - `rust` and [`rustfmt`](https://github.com/rust-lang/rustfmt)
@@ -55,57 +42,53 @@ This repo gives the `nvim` config for developing with Rust and/or JS(TS). It has
 
 If you are using neovim in anaconda. Consider using [`example-conda-env.yml`](./example-conda-env.yml) to build your environment.
 
+## Cheats sheet
+
 <details>
 <summary><b>tmux Configuration</b></summary>
-
-Recommended configuration for [ `~/.tmux.conf` ](./.tmux.conf)
-
-### Default terminal behavior in `tmux`
-
-To make pane behaves like normal terminal, `shift` should be hold. For example, to paste stuff from clipboard in `tmux` terminal pane, you need `shift+right click`.
-
-### Copy in tmux
-
+- To make pane behaves like normal terminal, `shift` should be hold. For example, to paste stuff from clipboard in `tmux` terminal pane, you need `shift+right click`.
 - enter copy mode: `<C-a>-[`
 - move around using `h/j/k/l/0/$`
 - begin copy highlighting: `<space>` or `v`
 - copy: `<CR>` or `y`
 - paste with `<C-a>+]`
 - exit copy mode: `<C-c>`
+- Simple workflow with `tmux`
+    ```bash
+    # in terminal, create a new session
+    tmux new -s sessionName
+    # detach from a session
+    tmux detach
+    # attach to a session
+    tmux attach -t sessionName
+    # kill a session/window
+    tmux kill-session -t sessionName
+    # if you have pre-stored session, simply run
+    tmux
 
-### Simple workflow with `tmux`
+    # create a horizontal pane using <C-a>+-
+    # adjust the height of the two panes using j/k
+    # switch between panes using <C-a>+↑/↓
+    # close pane by typing 'exit'
+    # open neovim in upper pane, run terminal cmd in lower pane
 
-```bash
-# in terminal, create a new session
-tmux new -s sessionName
-# detach from a session
-tmux detach
-# attach to a session
-tmux attach -t sessionName
-# kill a session/window
-tmux kill-session -t sessionName
-# if you have pre-stored session, simply run
-tmux
-
-# create a horizontal pane using <C-a>+-
-# adjust the height of the two panes using j/k
-# switch between panes using <C-a>+↑/↓
-# close pane by typing 'exit'
-# open neovim in upper pane, run terminal cmd in lower pane
-
-# for full-stack dev., it's useful to create 2 windows in a session
-# create a new window: <C-a>+c
-# switch between windows: <C-a>+w
-# <C-a>+c to create new window
-```
+    # for full-stack dev., it's useful to create 2 windows in a session
+    # create a new window: <C-a>+c
+    # switch between windows: <C-a>+w
+    # <C-a>+c to create new window
+    ```
 
 </details>
 
-## Cheats sheet
+<details><summary>fzf</summary>
 
-### Workspace
+- `inv`: open a file interactively in neovim
+- `<leader>wd`: set pwd to the path where opened buffer is located in neovim
+- `cd [pattern]**<tab>`: trigger fzf for goint to a folder.(folder starts with dot is not listed)
 
-<details><summary>details</summary>
+</details>
+
+<details><summary>Workspace</summary>
 
 A workspace is a folder containing multiple git repositories. Here we use [`projections.nvim`](https://github.com/GnikDroy/projections.nvim/tree/pre_release?tab=readme-ov-file) to manage workspaces. Using it gives you the following options:
 
@@ -115,17 +98,17 @@ A workspace is a folder containing multiple git repositories. Here we use [`proj
 
 </details>
 
-### Python
-
+<details>
+<summary>Python-mode</summary>
 We use `rope` in `python-mode` for `goto_definition` functionality.
 
 - `:PymodeLintAuto`: auto-fix PEP8 issues
 - `<C-Space>` in `.py`: auto-completion
 - `:QuartoPreview`: preview quarto file
 
-### Markdown
+</details>
 
-<details><summary>details</summary>
+<details><summary>Markdown</summary>
 
 - `:Mtoc i`: insert ToC
 - `:Mtoc u`: update ToC
@@ -134,9 +117,7 @@ We use `rope` in `python-mode` for `goto_definition` functionality.
 
 </details>
 
-### Add or delete things
-
-<details><summary>details</summary>
+<details><summary>neo-tree</summary>
 
 In `neotree`:
 
@@ -146,9 +127,7 @@ In `neotree`:
 
 </details>
 
-### Go-to places
-
-<details><summary>details</summary>
+<details><summary>Go to places</summary>
 
 - `g;`: go to last changed place
 - `gi`: go to last place and insert
@@ -161,9 +140,7 @@ In `neotree`:
 
 </details>
 
-### Folding code
-
-<details><summary>details</summary>
+<details><summary>Fold Codes</summary>
 
 - `zo/c`: open/close fold under the cursor
 - `zO/C`: open/close fold recursively under the cursor, folds without cursor in them unaffected
@@ -172,17 +149,13 @@ In `neotree`:
 
 </details>
 
-### Mode switching
-
-<details><summary>details</summary>
+<details><summary>Mode Switch</summary>
 
 - `<Alt-f>`: escape insert mode and jump out of current paired ""/[]/{}/()/''/,/``
 
 </details>
 
-### Tabs and windows
-
-<details><summary>details</summary>
+<details><summary>Tabs and Windows</summary>
 
 - `<space>+<Tab>`: switch windows
 - `tabe .`: create a new tab
@@ -194,9 +167,7 @@ In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
 
 </details>
 
-### Change surrounds
-
-<details><summary>details</summary>
+<details><summary>Change Surrounds</summary>
 
 | Old text                       | Command   | New text                   |
 | :----------------------------- | :-------- | :------------------------- |
@@ -214,9 +185,7 @@ In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
 
 </details>
 
-### Commenting and formatting
-
-<details><summary>details</summary>
+<details><summary>Comments</summary>
 
 - `<Ctrl-/>`: comment current line
 - `<space>gf`: global formatting
@@ -226,19 +195,14 @@ In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
 - `gb`: toggle the selected region using blockwise comment
 
 </details>
-
-### Programming hints
-
-<details><summary>details</summary>
+<details><summary>Programming Hints</summary>
 
 - `<space>k`: see function info
+- `<space>gd`: go to definition
 - `<space>a`: see code actions
-
 </details>
 
-### Find things
-
-<details><summary>details</summary>
+<details><summary>Find things</summary>
 
 - `<space>h`: remove search highlights
 - `<space>n`: open/close neotree file system, use `f`/`b`/`g`/`c` to open filesystem/buffers/git/components tabs
@@ -249,9 +213,7 @@ In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
 
 </details>
 
-### Debugging
-
-<details><summary>details</summary>
+<details><summary>Debugging</summary>
 
 - `<leader>od`: "open debug ui"
 - `<leader>cd`: "close debug ui"
@@ -262,9 +224,7 @@ In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
 
 </details>
 
-### Git
-
-<details><summary>details</summary>
+<details><summary>Git</summary>
 
 `git-fugitive` and `vim-flog` are currently added to run git commands in nvim. You can use `:Git` to run commands just like you do in terminal. Some examples are:
 
@@ -294,9 +254,7 @@ Use `:Flog` to open a new tab that shows results of `git log`. The new tab conta
 
 </details>
 
-### Terminal
-
-<details><summary>details</summary>
+<details><summary>Terminal</summary>
 
 - `:terminal`: open a terminal in neovim as a split window
 - `i/I/a/A`: insert in terminal window

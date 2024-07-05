@@ -96,6 +96,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 
 -- GLOBAL KEY REMAPPING
+-- '<leader>wd' to set pwd to where the file is located
+vim.api.nvim_set_keymap('n', '<leader>wd', ':cd %:p:h<CR>:pwd<CR>', { noremap = true, silent = true })
 -- '-' goes to the line end
 vim.keymap.set("n", "-", "<End>")
 -- '<space>h' remove search hight light
