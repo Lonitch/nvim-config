@@ -85,6 +85,7 @@ local function format_with_leptosfmt()
   vim.api.nvim_win_set_cursor(0, save_cursor)
   -- Save the buffer again, avoiding infinite loop
   if formatting then
+    -- This is a filter process running in a background thread.
     vim.cmd("silent! w")
     formatting = false
   end
@@ -95,14 +96,11 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   callback = format_with_leptosfmt,
 })
 
--- GLOBAL KEY REMAPPING
 -- '<leader>wd' to set pwd to where the file is located
 vim.api.nvim_set_keymap('n', '<leader>wd', ':cd %:p:h<CR>:pwd<CR>', { noremap = true, silent = true })
 -- '-' goes to the line end
 vim.keymap.set("n", "-", "<End>")
--- '<space>h' remove search hight light
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
--- Alt+f to escape insert/select/replace mode
 vim.keymap.set("v", "<A-f>", "<C-[>")
 vim.keymap.set("t", "<A-f>", "<C-[>")
 -- <space>+tab to switch windows
