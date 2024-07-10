@@ -104,7 +104,7 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 vim.keymap.set("v", "<A-f>", "<C-[>")
 vim.keymap.set("t", "<A-f>", "<C-[>")
 -- <space>+tab to switch windows
-vim.keymap.set("n", "<leader><Tab>", "<C-w><C-w>")
+-- vim.keymap.set("n", "<leader><Tab>", "<C-w><C-w>")
 -- auto-cmd of centering window after line jumping to window bottom/top
 vim.api.nvim_set_keymap("n", "<space>j", "Lzz", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<space>m", "Hzz", { noremap = true, silent = true })
