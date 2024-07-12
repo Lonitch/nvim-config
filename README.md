@@ -200,6 +200,7 @@ We use `rope` in `python-mode` for `goto_definition` functionality.
 <details><summary>Tabs and Windows</summary>
 
 - `<A-h/j/k/l>`: switch windows of tmux and neovim interchangeably
+- `<space>-<Tab>`: use this keybinding to jump to LSP windows
 - `tabe .`: create a new tab
 
 In `telescope`(either `<leader>ff`, or `<leader>lg`), you can
